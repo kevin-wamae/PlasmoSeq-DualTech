@@ -142,7 +142,7 @@ rule trim_ont_adapters:
         fastqTrim = config['porechop']['fastqTrim'],
     log: config['porechop']['log']
     params:
-        checkreads = 1
+        checkreads = 10000
     shell:
         """
         zcat {input} > {output.fastqMerge}
