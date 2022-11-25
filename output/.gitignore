@@ -1,0 +1,6 @@
+# MacOS files
+**/.DS_Store
+
+# snakemake files
+.snakemake/
+**/.snakemake_timestamp

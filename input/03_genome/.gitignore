@@ -1,0 +1,12 @@
+# MacOS files
+.DS_Store
+
+# snakemake files
+.snakemake_timestamp
+
+# all other files
+*.fasta
+*.fa
+*.fai
+*.txt
+*.gff

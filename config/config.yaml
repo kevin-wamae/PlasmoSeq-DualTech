@@ -1,0 +1,94 @@
+
+# ****************************************************************
+#                              INPUT
+# ****************************************************************
+
+# fastq files, adapters and genome files
+# ----------------------------------------------------------------
+input:
+   fastq: input/01_fastq/                                      # raw fastq files
+   adapters: input/02_adapters/illumina-TruSeq-adapters.fasta  # sequencing adapters
+   genome:
+      fasta: input/03_genome/falciparum_3D7_v51_genome.fasta   # genome fasta file
+      gff: input/03_genome/falciparum_3D7_v51_annotations.gff  # gff annotation file
+
+
+# ****************************************************************
+#                              OUTPUT
+# ****************************************************************
+
+# qc_raw_files - quality control on raw fastq files
+# ----------------------------------------------------------------
+fastqcRaw:
+   dir: output/02_qc_raw/    # output - fastqc working directory
+
+
+# merge_qc_reports - merge fastqc files from raw fastq files
+# ----------------------------------------------------------------
+multiqc:
+   dir: output/03_multiqc_raw/  # output - multiqc output
+
+
+# trim_ont_adapters - trim ont adapters
+# ----------------------------------------------------------------
+porechop:
+   fastqRaw: output/04_trim_fastq_ont/porechop_raw.fastq.gz    # output - merged fastq files
+   fastqTrim: output/04_trim_fastq_ont/porechop_trim.fastq.gz  # output - trimmed fastq file
+   log: output/04_trim_fastq_ont/log.txt
+
+
+# trim_illumina_adapters - trim illumina adapters
+# ----------------------------------------------------------------
+cutadapt:
+   fastqTrim: output/05_trim_fastq_illumina/cutadapt_trim_fastq.gz  # output - trimmed fastq file
+   log: output/05_trim_fastq_illumina/cutadapt_log.json             # output - cutadapt log file
+
+# qc_trimmed_files - quality control on fastq files
+# ----------------------------------------------------------------
+dirQcTrim:
+   fastqc: output/06_qc_trimmed_filesmed/  # output - fastqc working directory
+
+
+# bwa_index - generate index files for genome mapping
+# ----------------------------------------------------------------
+bwa:
+   index: output/07_read_mapping/genomeIndex/falciparum_3D7_v51_genome  # genome index files
+
+
+# map_reads - short read mapping
+# ----------------------------------------------------------------
+bam:
+   sorted: output/07_read_mapping/01_ont.sorted.bam                  # bam file, unsorted
+   markDuplicates: output/07_read_mapping/02_ont.sorted.markdup.bam  # bam file, sorted & duplicates marked
+   index: output/07_read_mapping/02_ont.sorted.markdup.bam.bai       # bam-index file
+   bed: output/07_read_mapping/03_ont.sorted.bam.bed                 # output - location of bed file, raw
+
+
+# merge_features - manipulate bed files
+# ----------------------------------------------------------------
+bed:
+   merged: output/07_read_mapping/04_ont.sorted.bam.merged.bed             # overlapping intervals merged
+   genomeCov: output/07_read_mapping/05_ont.sorted.bam.coverage.bed        # genome coverage
+   gffToBed: output/07_read_mapping/06_falciparum_3D7_v51_annotations.bed  # gff to bed file
+   annotated: output/07_read_mapping/07_ont.sorted.bam.annotated.bed       # annotated bed file
+
+
+# variant calling - call variants against reference genome
+# ----------------------------------------------------------------
+bcftools:
+   vcf: output/08_variant_calling/01_vcf_raw.vcf.gz
+
+
+# annotate_variants - annotate variants in vcf file
+# ----------------------------------------------------------------
+snpEff:
+   config: .snpEff.config
+   database: P.falciparum                            # snpEff database
+   vcf: output/08_variant_calling/02_vcf_ann.vcf.gz
+
+
+# extract_variants - extract variants from vcf file
+# ----------------------------------------------------------------
+snpSift:
+   annotations: output/08_variant_calling/03_vcf_to_table.txt
+   alleleFreq: output/08_variant_calling/04_vcf_allele_freq.txt

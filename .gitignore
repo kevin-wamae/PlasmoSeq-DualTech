@@ -1,0 +1,11 @@
+# MacOS files
+**/.DS_Store
+
+# snakemake files
+.snakemake/
+**/.snakemake_timestamp
+input/04_snpeff_database/
+
+# all other files
+**/*.fai
+.snpEff.config

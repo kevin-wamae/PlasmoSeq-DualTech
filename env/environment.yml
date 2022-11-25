@@ -1,0 +1,18 @@
+name: ampseq-analysis
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+  - anaconda
+  - r
+dependencies:
+  - snakemake>=7.18.2
+  - fastqc>=0.11.9
+  - multiqc>=1.13
+  - porechop>=0.2.4
+  - cutadapt>=4.1
+  - bwa>=0.7.17
+  - bedtools>=2.30.0
+  - bcftools>=1.16
+  - snpeff>=5.1
+  - snpsift>=5.1
