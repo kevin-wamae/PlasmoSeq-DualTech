@@ -1,5 +1,5 @@
 
-# A snakemake pipeline for mapping short _P. falciparum amplicon_ reads
+# A snakemake pipeline for variant calling from _P. falciparum_ short amplicon reads
 ### _The pipeline is still at it's infancy stage_
 
 
