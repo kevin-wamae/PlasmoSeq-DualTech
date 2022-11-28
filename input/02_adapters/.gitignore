@@ -5,6 +5,4 @@
 .snakemake_timestamp
 
 # all other files
-*.fasta
-*.fa
-*.txt
+
