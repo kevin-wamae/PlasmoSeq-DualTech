@@ -11,7 +11,7 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
 - Finally, ONT sequence libraries were generated using just one set of ONT adapters and sequenced on the ONT using the Flow Cell R9.4.1.
 - Hence, we cannot demultiplex the sequences into individual samples and further analyses were done at the population level.
 
----
+
 
 ### Below are the project dependencies:
 
@@ -33,7 +33,7 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
 - [snpEff](https://anaconda.org/bioconda/snpeff) - a genetic variant annotation and effect prediction toolbox
 - [SnpSift](https://anaconda.org/bioconda/snpsift) - a toolbox that allows you to filter and manipulate annotated files.
 
----
+
 
 ### Where to start
 - Clone this project into your computer using Git ([_installation instructions_](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)) with the following command:
@@ -41,7 +41,7 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
 - Navigate into the cloned directory using the following command:
   - `cd ampSeq-short-read-ONT`
  
- ---
+
 
 ### Directory structure
 - Below is the default directory structure:
@@ -75,7 +75,7 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
     └── snakefile
 ```
 
----
+
 
 ### Running the analysis
 Install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) and execute the following commands:
@@ -99,7 +99,7 @@ Install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/ind
   - _**PS** - Replace **rule** in the command with respective rule-name from the `workflow/snakefile`_
   - `snakemake -c4 rule` (_for example_ `snakemake -c4 qc_raw_files`)
   
-  ---
+
   
   ### Expected output
   Below is the expected directory structure of the **output/** directory:
