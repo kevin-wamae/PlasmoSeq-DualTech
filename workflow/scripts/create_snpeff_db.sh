@@ -2,40 +2,10 @@
 # a bash script for creating a snpEff database in the output directory
 # last update worked with SnpEff 5.1d (build 2022-04-19 15:49)
 # *****************************************************************
-# below is the starting directory structure
-
-    # .
-    # ├── P.falciparum
-    # └── genomes
-
-
-# and below is the directory structure once snpEff has created the
-# the database
-
-#     .
-#     ├── P.falciparum
-#     │   ├── cds.fa
-#     │   ├── genes.gff
-#     │   ├── protein.fa
-#     │   ├── sequence.Pf3D7_05_v3.bin
-#     │   ├── sequence.Pf3D7_06_v3.bin
-#     │   ├── sequence.Pf3D7_07_v3.bin
-#     │   ├── sequence.Pf3D7_08_v3.bin
-#     │   ├── sequence.Pf3D7_09_v3.bin
-#     │   ├── sequence.Pf3D7_10_v3.bin
-#     │   ├── sequence.Pf3D7_11_v3.bin
-#     │   ├── sequence.Pf3D7_12_v3.bin
-#     │   ├── sequence.Pf3D7_13_v3.bin
-#     │   ├── sequence.Pf3D7_14_v3.bin
-#     │   ├── sequence.bin
-#     │   └── snpEffectPredictor.bin
-#     └── genomes
-#         └── P.falciparum.fa
 
 
 # *****************************************************************
-# we are going to create a P.falciparum database using data from
-# PlasmoDB
+# we are going to create a P.falciparum database using data from PlasmoDB
 # *****************************************************************
 # variables for downloading genome files
 GENOME_URL='https://plasmodb.org/common/downloads/release-51/Pfalciparum3D7/'
