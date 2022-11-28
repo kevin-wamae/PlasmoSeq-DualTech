@@ -86,8 +86,8 @@ Install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/ind
   - _**PS** - This needs to be done every time you want to execute this pipeline_:
   - `conda activate ampseq-analysis`
   
-3 - Create the `snpEff` database by executing the following bash script below. This script will download *P. falciparum* genome files from PlasmoDB and create and a **snpEff** database:
-  - _**PS** - for this analysis, we will use genome data from **release-51** of [PlasmoDB](https://plasmodb.org/plasmo/app), and we only need to run it once_:
+3 - Create the `snpEff` database by executing the bash script below. This script will download *P. falciparum* genome files from PlasmoDB and create and a **snpEff** database:
+  - _**PS** - for this analysis, we will use genome data **release-51** from [PlasmoDB](https://plasmodb.org/plasmo/app), and we only need to run it once_:
   - `bash workflow/scripts/create_snpeff_db.sh`
 
 4 - Finally, execute the whole `Snakemake` pipeline by running the following command in your terminal:
@@ -95,7 +95,7 @@ Install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/ind
   - `snakemake -c4`
   
 5 - Alternatively, you can execute a specific rule by running the following command in your terminal:
-  - _**PS** - Replace **rule** in the command with respective rule-name from the `workflow/snakefile`_
+  - _**PS** - Replace **rule** in the command with respective rule-name from the `workflow/Snakefile`_
   - `snakemake -c4 rule` (_for example_ `snakemake -c4 qc_raw_files`)
   
   ---
