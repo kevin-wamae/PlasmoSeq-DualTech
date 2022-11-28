@@ -73,7 +73,7 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
 #### Running the analysis
 Install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) and execute the following commands:
 - Create the conda analysis environment and install the dependencies from the ***env/environment.yml*** by running the following command in your terminal:
-  - `conda env create env/environment.yml`
+  - `conda env create --file env/environment.yml`
 - Activate the conda environment:
   - _**PS** - This needs to be done every time you want to execute this pipeline_:
   - `conda activate ampseq-analysis`
