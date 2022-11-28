@@ -9,8 +9,8 @@ input:
    fastq: input/01_fastq/                                      # raw fastq files
    adapters: input/02_adapters/illumina-TruSeq-adapters.fasta  # sequencing adapters
    genome:
-      fasta: input/03_genome/falciparum_3D7_v51_genome.fasta   # genome fasta file
-      gff: input/03_genome/falciparum_3D7_v51_annotations.gff  # gff annotation file
+      fasta: input/03_genome/genome.fasta   # genome fasta file
+      gff: input/03_genome/genome_annotations.gff  # gff annotation file
 
 
 # ****************************************************************
@@ -46,13 +46,13 @@ cutadapt:
 # qc_trimmed_files - quality control on fastq files
 # ----------------------------------------------------------------
 dirQcTrim:
-   fastqc: output/06_qc_trimmed_filesmed/  # output - fastqc working directory
+   fastqc: output/06_qc_trimmed_files/  # output - fastqc working directory
 
 
 # bwa_index - generate index files for genome mapping
 # ----------------------------------------------------------------
 bwa:
-   index: output/07_read_mapping/genomeIndex/falciparum_3D7_v51_genome  # genome index files
+   index: output/07_read_mapping/genomeIndex/genome  # genome index files
 
 
 # map_reads - short read mapping
@@ -69,7 +69,7 @@ bam:
 bed:
    merged: output/07_read_mapping/04_ont.sorted.bam.merged.bed             # overlapping intervals merged
    genomeCov: output/07_read_mapping/05_ont.sorted.bam.coverage.bed        # genome coverage
-   gffToBed: output/07_read_mapping/06_falciparum_3D7_v51_annotations.bed  # gff to bed file
+   gffToBed: output/07_read_mapping/06_genome_annotations.bed  # gff to bed file
    annotated: output/07_read_mapping/07_ont.sorted.bam.annotated.bed       # annotated bed file
 
 
