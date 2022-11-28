@@ -2,5 +2,5 @@
 *.fastq.gz
 
 # include example fastq files
-!FAS78465_pass_barcode04_76a6d038_1.fastq.gz
-!FAS78465_pass_barcode04_76a6d038_0.fastq.gz
+!file-1_0.fastq.gz
+!file-2_1.fastq.gz
