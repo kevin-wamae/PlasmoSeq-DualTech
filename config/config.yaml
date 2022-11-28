@@ -6,11 +6,11 @@
 # fastq files, adapters and genome files
 # ----------------------------------------------------------------
 input:
-   fastq: input/01_fastq/                                      # raw fastq files
-   adapters: input/02_adapters/illumina-TruSeq-adapters.fasta  # sequencing adapters
+   fastq: input/01_fastq/                                   # raw fastq files
+   adapters: input/02_adapters/illumina-TruSeq-adapters.fa  # sequencing adapters
    genome:
-      fasta: input/03_genome/genome.fasta   # genome fasta file
-      gff: input/03_genome/genome_annotations.gff  # gff annotation file
+      fasta: input/03_genome/genome.fa                      # genome fasta file
+      gff: input/03_genome/genome_annotations.gff           # gff annotation file
 
 
 # ****************************************************************
@@ -20,7 +20,7 @@ input:
 # qc_raw_files - quality control on raw fastq files
 # ----------------------------------------------------------------
 fastqcRaw:
-   dir: output/02_qc_raw/    # output - fastqc working directory
+   dir: output/02_qc_raw/       # output - fastqc working directory
 
 
 # merge_qc_reports - merge fastqc files from raw fastq files
@@ -46,7 +46,7 @@ cutadapt:
 # qc_trimmed_files - quality control on fastq files
 # ----------------------------------------------------------------
 dirQcTrim:
-   fastqc: output/06_qc_trimmed_files/  # output - fastqc working directory
+   fastqc: output/06_qc_trimmed_files/               # output - fastqc working directory
 
 
 # bwa_index - generate index files for genome mapping
@@ -67,10 +67,10 @@ bam:
 # merge_features - manipulate bed files
 # ----------------------------------------------------------------
 bed:
-   merged: output/07_read_mapping/04_ont.sorted.bam.merged.bed             # overlapping intervals merged
-   genomeCov: output/07_read_mapping/05_ont.sorted.bam.coverage.bed        # genome coverage
-   gffToBed: output/07_read_mapping/06_genome_annotations.bed  # gff to bed file
-   annotated: output/07_read_mapping/07_ont.sorted.bam.annotated.bed       # annotated bed file
+   merged: output/07_read_mapping/04_ont.sorted.bam.merged.bed        # overlapping intervals merged
+   genomeCov: output/07_read_mapping/05_ont.sorted.bam.coverage.bed   # genome coverage
+   gffToBed: output/07_read_mapping/06_genome_annotations.bed         # gff to bed file
+   annotated: output/07_read_mapping/07_ont.sorted.bam.annotated.bed  # annotated bed file
 
 
 # variant calling - call variants against reference genome
@@ -82,13 +82,13 @@ bcftools:
 # annotate_variants - annotate variants in vcf file
 # ----------------------------------------------------------------
 snpEff:
-   config: .snpEff.config
+   config: .snpEff.config                            # snpEff configuration file
    database: P.falciparum                            # snpEff database
-   vcf: output/08_variant_calling/02_vcf_ann.vcf.gz
+   vcf: output/08_variant_calling/02_vcf_ann.vcf.gz  # annotated vcf file
 
 
 # extract_variants - extract variants from vcf file
 # ----------------------------------------------------------------
 snpSift:
-   annotations: output/08_variant_calling/03_vcf_to_table.txt
-   alleleFreq: output/08_variant_calling/04_vcf_allele_freq.txt
+   annotations: output/08_variant_calling/03_vcf_to_table.txt    # list of annotated variants
+   alleleFreq: output/08_variant_calling/04_vcf_allele_freq.txt  # list of annotated variants with allele frequencies
