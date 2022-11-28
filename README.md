@@ -1,7 +1,6 @@
-
-
 # A snakemake pipeline for variant calling from _P. falciparum_ short amplicon reads
-### _The pipeline is still at it's infancy stage_
+### Motivation
+_PS: The pipeline is still at it's infancy stage_
 
 
 
@@ -11,6 +10,7 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
 - Finally, ONT sequence libraries were generated using just one set of ONT adapters and sequenced on the ONT using the Flow Cell R9.4.1.
 - Hence, we cannot demultiplex the sequences into individual samples and further analyses were done at the population level.
 
+---
 
 ### Below are the project dependencies:
 
@@ -32,11 +32,15 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
 - [snpEff](https://anaconda.org/bioconda/snpeff) - a genetic variant annotation and effect prediction toolbox
 - [SnpSift](https://anaconda.org/bioconda/snpsift) - a toolbox that allows you to filter and manipulate annotated files.
 
-### _Where to start_
+---
+
+### Where to start
 - Clone this project into your computer using Git ([_installation instructions_](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)) with the following command:
   - `git clone https://github.com/kevin-wamae/ampSeq-short-read-ONT.git`
 - Navigate into the cloned directory using the following command:
   - `cd ampSeq-short-read-ONT`
+ 
+ ---
 
 ### Directory structure
 - Below is the default directory structure:
@@ -70,22 +74,33 @@ We sequenced an Illumina sequencing library on the Oxford Nanopore MinION (ONT) 
     └── snakefile
 ```
 
-#### Running the analysis
+---
+
+### Running the analysis
 Install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) and execute the following commands:
-- Create the conda analysis environment and install the dependencies from the ***env/environment.yml*** by running the following command in your terminal:
+
+1 - Create the conda analysis environment and install the dependencies from the ***env/environment.yml*** by running the following command in your terminal:
   - `conda env create --file env/environment.yml`
-- Activate the conda environment:
+  
+2 - Activate the conda environment:
   - _**PS** - This needs to be done every time you want to execute this pipeline_:
   - `conda activate ampseq-analysis`
-- Create the `snpEff` database by executing the following bash script below. This script will download *P. falciparum* genome files from PlasmoDB and create and a **snpEff** database:
-- - _**PS** - for this analysis, we will use **release-51** data from PlasmoDB_:
+  
+3 - Create the `snpEff` database by executing the following bash script below. This script will download *P. falciparum* genome files from PlasmoDB and create and a **snpEff** database:
+  - _**PS** - for this analysis, we will use genome data from **release-51** of [PlasmoDB](https://plasmodb.org/plasmo/app), and we only need to run it once_:
   - `bash workflow/scripts/create_snpeff_db.sh`
-- Finally, execute the `Snakemake` pipeline by running the following command in your terminal:
 
+4 - Finally, execute the whole `Snakemake` pipeline by running the following command in your terminal:
   - _**PS** - Replace **4** in the command with the number of CPUs you wish to use_
   - `snakemake -c4`
   
-  #### Expected output
+5 - Alternatively, you can execute a specific rule by running the following command in your terminal:
+  - _**PS** - Replace **rule** in the command with respective rule-name from the `workflow/snakefile`_
+  - `snakemake -c4 rule` (_for example_ `snakemake -c4 qc_raw_files`)
+  
+  ---
+  
+  ### Expected output
   Below is the expected directory structure of the **output/** directory:
   - **01_snpeff_database/** - contains the snpEff database for variant calling
   - **02_qc_raw/** - contains the fastqc QC reports from the raw fastq files
