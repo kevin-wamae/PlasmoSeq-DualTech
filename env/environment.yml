@@ -12,6 +12,9 @@ dependencies:
   - porechop>=0.2.4
   - cutadapt>=4.1
   - bwa>=0.7.17
+  - samtools>=1.16.1
+  - sambamba>=0.8.2
+  - bedops>=2.4.41
   - bedtools>=2.30.0
   - bcftools>=1.16
   - snpeff>=5.1
