@@ -145,7 +145,7 @@ rule trim_ont_adapters:
         checkreads = 10000
     shell:
         """
-        zcat {input} > {output.fastqMerge}
+        gzcat {input} > {output.fastqMerge}
         porechop --check_reads {params.checkreads} -i {output.fastqMerge} -o {output.fastqTrim} | tee {log}
         """
 
